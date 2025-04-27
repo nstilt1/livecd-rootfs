@@ -643,12 +643,20 @@ case $PROJECT in
                 ;;
 esac
 
-if ! [ -e config/germinate-output/structure ]; then
-        echo "Running germinate..."
-        (cd config/germinate-output && germinate --no-rdepends --no-installer \
-                -S $SEEDMIRROR -m $MIRROR -d $SUITE -s $SEED \
-                ${COMPONENTS:+-c "$COMPONENTS"} -a $ARCH)
-fi
+#if ! [ -e config/germinate-output/structure ]; then
+#        echo "Running germinate..."
+		# added
+#		if [ -n "$COMPONENTS" ]; then
+#			GERMINATE_ARG="-c $(echo $COMPONENTS | sed -e's/ \+/,/g')"
+#        fi
+		# original
+        #(cd config/germinate-output && germinate --no-rdepends --no-installer \
+        #        -S $SEEDMIRROR -m $MIRROR -d $SUITE -s $SEED \
+        #        ${COMPONENTS:+-c "$COMPONENTS"} -a $ARCH)
+#		(cd config/germinate-output && germinate --no-rdepends --no-installer \
+#                -S $SEEDMIRROR -m $MIRROR -d $SUITE,$SUITE-updates \
+#                -s ubuntu.$SUITE $GERMINATE_ARG -a $ARCH) # Explicitly use ubuntu.$SUITE
+#fi
 
 case $PROJECT in
 	ubuntu|ubuntu-dvd)
